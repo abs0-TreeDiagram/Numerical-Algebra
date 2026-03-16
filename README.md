@@ -12,3 +12,5 @@
 `Doolittle.c`：矩阵的直接Doolittle分解（直接LU分解）。数学上可以证明能够进行分解的矩阵必须所有顺序主子式非零。
 
 `LU_Decomp_and_solving.c`：在编辑区输入代表线性方程组`AX=b`的增广矩阵，使用LU分解对系数矩阵`A`进行LU分解并用两步求解方程组。输出内容中，`Y`为中间向量，满足`LY=b`，`X`为最终解向量，通过求解`UX=Y`得出. 
+
+`Cholesky.c`：对称正定矩阵的Cholesky分解。
