@@ -20,3 +20,5 @@
 `Jacobi_Iter.c`：Jacobi迭代法解方程组。
 
 `Gauss_Seidel_Iter.c`：Gauss-Seidel迭代法解方程组。
+
+`Relaxation_Iter.c`：松弛迭代法解方程组。
