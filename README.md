@@ -18,3 +18,5 @@
 文件夹`LU_decomp`：LU分解的MATLAB实现。这是一项课程作业，否则我不会去写已经内置好的东西。
 
 `Jacobi_Iter.c`：Jacobi迭代法解方程组。
+
+`Gauss_Seidel_Iter.c`：Gauss-Seidel迭代法解方程组。
