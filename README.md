@@ -24,3 +24,5 @@
 `Relaxation_Iter.c`：松弛迭代法解方程组。
 
 `Steepest_Descent.c`：最速下降法解方程组。
+
+`spsMatrix.c`：C实现稀疏矩阵存储读取解决方案。`main`函数为一个示例。
