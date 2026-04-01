@@ -26,3 +26,21 @@
 `Steepest_Descent.c`：最速下降法解方程组。
 
 `spsMatrix.c`：C实现稀疏矩阵存储读取解决方案。`main`函数为一个示例。
+
+## 关于Library文件夹
+
+数值代数功能实现的库函数封装。
+
+使用方法：
+
+1. 将`numalg.h`与`numalg.a`下载并放入选定的文件夹中
+
+2. 打开Dev C++，点击左上角菜单栏File，依次点击New, Project，新建Console Application的C Project，在弹出的路径选择窗口中将.dev文件保存至1.中所述文件夹
+
+3. 保存成功后出现`main.c`脚本标签页及预设模版。从上方菜单栏开始依次点击Project, Project Options, Parameters, Add library or object，在路径选择窗口转到上述文件夹，选择`numalg.h`与`numalg.a`，将它们添加到`Linker`栏中
+
+4. 回到`main.c`的脚本编辑界面，在`main.c`中导入头文件。即将`#include "numalg.h"`添加在脚本的开头
+
+5. 开始编写你的脚本
+
+库函数封装工作仍在进行中，本文件夹会不定时更新。可以打开`numalg.h`文件查看当前可用的函数。
