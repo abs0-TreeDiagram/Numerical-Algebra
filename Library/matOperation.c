@@ -238,19 +238,90 @@ double ** matCol(int i,int j,double ** p,int k)
     return ans;
 }
 
-void colJoint(int i,int j,double *** pA,double ** b)
+void colJoint(int i,int j,double *** pA,int k,double *** b)
 {
-    double ** temp=matCreate(i,j+1);
+    double ** temp=matCreate(i,j+k);
     for (int m=0;m<i;m++)
     {
         for (int n=0;n<j;n++)
         {
-            temp[m][n]=(*pA)[m][n];
+            if (pA==NULL)
+            {
+                temp[m][n]=0;
+            }
+            else
+            {
+                temp[m][n]=(*pA)[m][n];
+            }
         }
-        temp[m][j]=b[m][0];
+        for (int n=j;n<j+k;n++)
+        {
+            if (b==NULL)
+            {
+                temp[m][n]=0;
+            }
+            else
+            {
+                temp[m][n]=(*b)[m][n-j];
+            }
+        }
     }
-    matFree(*pA,i,j);
-    *pA=temp;
+    if (pA!=NULL)
+    {
+        matFree(*pA,i,j);
+        *pA=temp;
+    }
+    else
+    {
+        matFree(*b,i,k);
+        *b=temp;
+    }
+    
+    
+}
+
+void rowJoint(int i,int j,double *** pA,int k,double *** B)
+{
+    double ** temp=matCreate(i+k,j);
+    for (int m=0;m<i;m++)
+    {
+        for (int n=0;n<j;n++)
+        {
+            if (pA==NULL)
+            {
+                temp[m][n]=0;
+            }
+            else
+            {
+                temp[m][n]=(*pA)[m][n];
+            }
+        }
+    }
+    for (int m=i;m<i+k;m++)
+    {
+        for (int n=0;n<j;n++)
+        {
+            if (B==NULL)
+            {
+                temp[m][n]=0;
+            }
+            else
+            {
+                temp[m][n]=(*B)[m-i][n];
+            }
+            
+        }
+    }
+    if (pA!=NULL)
+    {
+        matFree((*pA),i,j);
+        *pA=temp;
+    }
+    else
+    {
+        matFree(*B,k,j);
+        *B=temp;
+    }
 }
 
 double vectInProd(int n,double ** p1,double ** q)
@@ -271,6 +342,31 @@ void matFill(int i,int j,double ** p,double k)
         for (int n=0;n<j;n++)
         {
             p[m][n]=k;
+        }
+    }
+}
+
+double ** eye(int n)
+{
+    double ** ans=matCreate(n,n);
+    matFill(n,n,ans,0);
+    for(int i=0;i<n;i++)
+    {
+        ans[i][i]=1;
+    }
+    return ans;
+}
+
+void errorElim(int i,int j,double ** A)
+{
+    for (int m=0;m<i;m++)
+    {
+        for (int n=0;n<j;n++)
+        {
+            if (fabs(A[m][n])<5e-6)
+            {
+                A[m][n]=0;
+            }
         }
     }
 }
